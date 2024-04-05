@@ -1,1 +1,5 @@
 *.zip
+db_data
+wordpress
+wp_image
+docker-compose.yaml

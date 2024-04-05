@@ -77,28 +77,26 @@ class Mm_Update_Cache_Clear {
 
 		$this->load_dependencies();
 
+		add_filter('wpmudev_dashboard_upgrader_get_plugin_data', function ($data, $file) {
+			$this->schedule_cache_clear();
+		});
+
 		// Clear cache when a plugin update completes
 		add_filter('update_plugin_complete_actions', function ($update_actions, $plugin) {
-			if ( function_exists( 'rocket_clean_domain' ) ) {
-				rocket_clean_domain();
-				set_transient( "mm_toast", true, 180 );
-			}
+			$this->schedule_cache_clear();
 			return $update_actions;
 		});
 
+
+		add_action('mm_clear_cache', array($this, 'clear_cache'));
+
 		add_action( 'upgrader_process_complete', function() {
-			if ( function_exists( 'rocket_clean_domain' ) ) {
-				rocket_clean_domain();
-				set_transient( "mm_toast", true, 180 );
-			}
+			$this->schedule_cache_clear();
 		});
 
 		// Clear cache when update to WP Core completes
 		add_action( '_core_updated_successfully', function() {
-			if ( function_exists( 'rocket_clean_domain' ) ) {
-				rocket_clean_domain();
-				set_transient( "mm_toast", true, 180 );
-			}
+			$this->schedule_cache_clear();
 		});
 
 		add_action('admin_notices', function() {
@@ -109,6 +107,18 @@ class Mm_Update_Cache_Clear {
              </div>';
 			}
 		});
+	}
+
+	private function schedule_cache_clear() {
+		wp_schedule_single_event(time() + 2 * 60, 'mm_clear_cache');
+	}
+
+	private function clear_cache()
+	{
+		if ( function_exists( 'rocket_clean_domain' ) ) {
+			rocket_clean_domain();
+			set_transient( "mm_toast", true, 180 );
+		}
 	}
 
 	/**
