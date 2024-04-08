@@ -16,7 +16,7 @@
  * Plugin Name:       Clear Cache On Update for WP-Rocket
  * Plugin URI:        https://motion-media.de
  * Description:       Clears the WP-Rocket after when Wordpress or plugins get updated 
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Motion Media
  * Author URI:        https://motion-media.de/
  * License:           MIT
