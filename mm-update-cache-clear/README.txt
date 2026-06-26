@@ -1,16 +1,14 @@
-=== Plugin Name ===
-Contributors:
-Donate link:
-Tags: caching
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+=== Clear Cache On Update for WP-Rocket ===
+Contributors: Motion Media
+Tags: caching, wp-rocket
 License: MIT
 License URI: https://opensource.org/license/mit/
 
-Clears the WP-Rocket after when Wordpress or plugins get updated
+**ARCHIVIERT** — Diese Funktionalitaet ist jetzt Teil von [mm-wp-tools](https://github.com/motion-media-de/mm-wp-tools).
 
-== Installation ==
+mm-wp-tools vereint Cache-Clear + Inventory-Webhook fuer zentrales CVE-Monitoring in einem Plugin.
 
-1. Upload `mm-update-cache-clear.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
+== Changelog ==
+
+= 1.0.1 =
+* Archiviert. Nachfolger: mm-wp-tools.
